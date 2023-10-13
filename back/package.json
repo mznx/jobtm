@@ -1,10 +1,10 @@
 {
   "name": "back",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc-watch --onSuccess \"npm run start\"",
+    "start": "node ./build/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
     "eslint": "^8.51.0",
+    "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2"
   }
 }
