@@ -22,6 +22,9 @@
         "space-infix-ops": "error",
         "space-unary-ops": "error",
         "array-bracket-spacing": [ "error", "always" ],
-        "eol-last": "error"
+        "eol-last": "error",
+        "semi-spacing": "error",
+        "indent": [ "error", 4 ],
+        "comma-dangle": [ "error", "always-multiline" ]
     }
 }
