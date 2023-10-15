@@ -1,0 +1,27 @@
+services:
+
+  nginx:
+    build: ./etc/volumes/nginx
+    volumes:
+      - ./etc/volumes/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./etc/volumes/nginx/conf/jobtm.conf:/etc/nginx/conf.d/jobtm.conf:ro
+      - ./etc/volumes/nginx/ssl/cert.crt:/etc/ssl/public/cert.crt:ro
+      - ./etc/volumes/nginx/ssl/cert.key:/etc/ssl/private/cert.key:ro
+    ports:
+      - 80:80
+      - 443:443
+
+  mariadb:
+    build: ./etc/volumes/mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: $MARIADB_ROOT_PASSWORD
+      MARIADB_USER: $MARIADB_USER
+      MARIADB_PASSWORD: $MARIADB_PASSWORD
+    ports:
+      - 127.0.0.1:3306:3306
+
+  back:
+    build: ./back
+    command: npm run start
+    volumes:
+      - ./back:/app
