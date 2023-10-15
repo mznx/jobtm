@@ -1,4 +1,6 @@
 import fastify from 'fastify';
+import AppModule from './app.module';
+import ModuleLoaderSys from './system/moduleLoader.system';
 import PluginLoaderSys from './system/pluginLoader.system';
 
 const server = fastify({
@@ -6,6 +8,7 @@ const server = fastify({
 });
 
 server.register(PluginLoaderSys);
+server.register(ModuleLoaderSys(AppModule));
 
 (async () => {
     try {
