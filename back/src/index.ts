@@ -1,8 +1,11 @@
 import fastify from 'fastify';
+import PluginLoaderSys from './system/pluginLoader.system';
 
 const server = fastify({
     logger: true,
 });
+
+server.register(PluginLoaderSys);
 
 (async () => {
     try {
