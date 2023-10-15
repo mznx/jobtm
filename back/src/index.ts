@@ -12,7 +12,7 @@ server.register(ModuleLoaderSys(AppModule));
 
 (async () => {
     try {
-        await server.listen({ port: 3001 });
+        await server.listen({ host: '0.0.0.0', port: 3001 });
     } catch (error) {
         console.error(error);
         process.exit(1);
