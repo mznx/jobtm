@@ -12,4 +12,6 @@
     "removeComments": true,
     "declaration": true,
   },
+  "include": ["./src"],
+  "exclude":["./tools"],
 }
