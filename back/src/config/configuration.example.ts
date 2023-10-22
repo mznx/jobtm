@@ -4,13 +4,19 @@ export default {
         port: 3001,
     },
 
-    coreDB: {
-        client: 'mysql2',
-        connection: {
-            host: 'mariadb',
-            user: 'root',
-            password: 'pass',
-            database: 'core',
+    database: {
+        core: {
+            client: 'mysql2',
+            connection: {
+                host: 'mariadb',
+                user: 'root',
+                password: 'pass',
+                database: 'core',
+            },
+            pool: {
+                min: 2,
+                max: 10,
+            },
         },
     },
 

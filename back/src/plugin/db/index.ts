@@ -8,7 +8,7 @@ declare module 'fastify' {
 }
 
 const init = (fastify: FastifyInstance) => ({
-    core: db.core(knex(fastify.conf.coreDB)),
+    core: db.core(knex(fastify.conf.database.core)),
 });
 
 export default fastifyPlugin(async (fastify: FastifyInstance) => {
