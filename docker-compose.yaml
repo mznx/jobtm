@@ -24,4 +24,4 @@ services:
     build: ./back
     command: npm run start
     volumes:
-      - ./back:/app
+      - ./back:/home/node/app
