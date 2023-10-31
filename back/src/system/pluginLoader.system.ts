@@ -9,7 +9,7 @@ import utils from '../plugin/utils/utils.plugin';
 export default fastifyPlugin(async (fastify: FastifyInstance) => {
     await fastify.register(conf);
 
-    await fastify.register(db);
+    await fastify.register(db, fastify.conf.database);
 
     fastify.register(cookie);
 

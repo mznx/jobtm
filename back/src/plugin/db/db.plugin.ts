@@ -1,17 +1,21 @@
 import { FastifyInstance } from 'fastify';
 import fastifyPlugin from 'fastify-plugin';
-import knex from 'knex';
+import knex, { Knex } from 'knex';
 import db from '../../db';
+
+interface DatabaseConfig {
+    core: Knex.Config;
+}
 
 declare module 'fastify' {
     interface FastifyInstance { db: ReturnType<typeof init> }
 }
 
-const init = (fastify: FastifyInstance) => ({
-    core: db.core(knex(fastify.conf.database.core)),
+const init = (conf: DatabaseConfig) => ({
+    core: db.core(knex(conf.core)),
 });
 
-export default fastifyPlugin(async (fastify: FastifyInstance) => {
-    const data = init(fastify);
+export default fastifyPlugin(async (fastify: FastifyInstance, dbConfig: DatabaseConfig) => {
+    const data = init(dbConfig);
     fastify.decorate('db', data);
 });
